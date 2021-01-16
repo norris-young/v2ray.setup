@@ -1,0 +1,56 @@
+{
+    "log": {
+        "access": "/var/log/v2ray/access.log",
+        "error": "/var/log/v2ray/error.log",
+        "loglevel": "warning"
+    },
+    "dns": {},
+    "stats": {},
+    "inbounds": [
+        {
+            "port": 520,
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "b8ea3ab1-640e-41e3-b297-61efb7928e5a",
+                        "alterId": 128
+                    }
+                ]
+            },
+            "tag": "in-0",
+            "streamSettings": {
+                "network": "tcp",
+                "security": "none",
+                "tcpSettings": {}
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "tag": "direct",
+            "protocol": "freedom",
+            "settings": {}
+        },
+        {
+            "tag": "blocked",
+            "protocol": "blackhole",
+            "settings": {}
+        }
+    ],
+    "routing": {
+        "domainStrategy": "AsIs",
+        "rules": [
+            {
+                "type": "field",
+                "ip": [
+                    "geoip:private"
+                ],
+                "outboundTag": "blocked"
+            }
+        ]
+    },
+    "policy": {},
+    "reverse": {},
+    "transport": {}
+}
